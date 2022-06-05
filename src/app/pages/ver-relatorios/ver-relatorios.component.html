@@ -1,0 +1,29 @@
+<div class="card m-2 text-danger">
+    <div class="card-body">
+        <h5 class="card-title">Relatórios</h5>
+        <div class="row col">
+            <div class="col-3">
+                <button class="btn btn-personalizado" (click)="active('jogos-melhores-medias')" id="jogos-melhores-medias"
+                    routerLink="jogos-melhores-avaliados">Jogos com melhores médias</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-personalizado" (click)="active('jogos-mais-avaliados')" id="jogos-mais-avaliados"
+                    routerLink="jogos-mais-avaliados">Jogos
+                    mais avaliados</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-personalizado" (click)="active('categoria')" id="categoria"
+                    routerLink="categorias-melhores-avaliadas">Categorias mais
+                    avaliadas</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-personalizado" (click)="active('membros')" id="membros"
+                routerLink="membros-mais-avaliaram">Membros com mais
+                    avaliações</button>
+            </div>
+        </div>
+        <div class="row col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
