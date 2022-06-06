@@ -124,7 +124,7 @@ export class CadastrarJogosComponent implements OnInit {
     console.log(this.authService.getUsuario());
     this.usuarioService.atualizarJogos(this.authService.getUsuario().id, idJogo).subscribe(
       (result)=> {
-        console.log(result);        
+        //console.log(result);        
       }, (error) => {
         alert('Erro ao adicionar jogo.')
         console.log(error);        
@@ -171,7 +171,7 @@ export class CadastrarJogosComponent implements OnInit {
 
     this.jogoService.salvarImagem(jogo, uploadData).subscribe(
       (result) => {
-        console.log(result);        
+        //console.log(result);        
       }, (error) => {
         console.log(error);        
       }

@@ -5,8 +5,8 @@
             <p>{{membro.userName}}</p>
             <p>{{membro.pais}} - {{membro.estado}}</p>
             <p>{{membro.email}}</p>
-            <p><b>{{membro.nome}} avaliou: </b>{{((membro.qtdJogosAvaliados === null ? 0 :
-                membro.qtdJogosAvaliados) )}} jogos</p>
+            <p>{{((membro.qtdJogosAvaliados === null ? 0 :
+                membro.qtdJogosAvaliados) )}} jogos avaliados por <b>{{membro.nome}}</b></p>
         </div>
     </div>
 </div>

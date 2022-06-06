@@ -7,14 +7,12 @@ import { Categoria } from 'src/app/models/categoria/categoria.model';
   providedIn: 'root'
 })
 export class CategoriaService {
-  
-
-  urlServer = "https://good-browser-games-lucas.herokuapp.com/goodbrowsergames/categoria/";
+  urlServer = "https://victor-good-browser-games.herokuapp.com/goodbrowsergames/categoria/";
 
   constructor(private http: HttpClient) { }
 
-  
-  cadastro(categoria: Categoria) {
+
+  cadastro(categoria: Categoria): Observable<any> {
     return this.http.post<any>(`${this.urlServer}cadastro`, categoria);
   }
 
@@ -30,7 +28,7 @@ export class CategoriaService {
     return this.http.put<any>(`${this.urlServer}editarCategoria`, categoria);
   }
 
-  buscarPorNome(categoria: any) {
+  buscarPorNome(categoria: any): Observable<any> {
     return this.http.post<any>(`${this.urlServer}buscarNomeCategoria`, categoria)
   }
 

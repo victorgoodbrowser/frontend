@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-
-  urlServer = "https://good-browser-games-lucas.herokuapp.com/goodbrowsergames/usuario/";
+  urlServer = "https://victor-good-browser-games.herokuapp.com/goodbrowsergames/usuario/";
 
   constructor(private http: HttpClient) { }
 
@@ -46,7 +45,7 @@ export class UsuarioService {
   atualizarJogos(idUsuario: any, idJogo: any): Observable<any> {
     return this.http.get<any>(`${this.urlServer}atualizarJogos/${idUsuario}/${idJogo}`)
   }
-  
+
   inserirJogoAvaliado(idUsuario: number, idJogo: number) {
     return this.http.get<any>(`${this.urlServer}inserirJogoAvaliado/${idUsuario}/${idJogo}`);
   }

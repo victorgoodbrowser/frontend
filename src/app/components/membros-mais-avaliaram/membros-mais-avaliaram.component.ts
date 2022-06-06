@@ -19,7 +19,8 @@ export class MembrosMaisAvaliaramComponent implements OnInit {
     this.jogoService.buscarMembrosMaiorNumeroAvaliacao().subscribe(
       (result) => {
         this.lista = result.length > 5 ? result.slice(0,5) : result; 
-        this.lista.push(this.lista[1])
+        //this.lista.push(this.lista[1])
+
       }, (error) => {
         console.log(error);        
       }

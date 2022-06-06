@@ -26,7 +26,7 @@ export class JogoAvaliacaoComponent implements OnInit {
     private utilService: UtilService
     ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.buscarJogo(this.jogoCodigo);
     this.buscarUsuario(this.usuarioCodigo);
     this.verificaMarcacaoUtil();

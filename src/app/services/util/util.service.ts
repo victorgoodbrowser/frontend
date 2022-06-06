@@ -6,23 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UtilService {
-  urlServer = "https://good-browser-games-lucas.herokuapp.com/goodbrowsergames/util/";
+  urlServer = "https://victor-good-browser-games.herokuapp.com/goodbrowsergames/util/";
 
   constructor(private http: HttpClient) { }
 
-  marcar(util: any) :Observable<any>{
+  marcar(util: any): Observable<any> {
     return this.http.post<any>(`${this.urlServer}marcar`, util);
   }
 
-  desmarcar(idJogo: any, idUsuario: any){
+  desmarcar(idJogo: any, idUsuario: any): Observable<any> {
     return this.http.delete<any>(`${this.urlServer}desmarcar/${idJogo}/${idUsuario}`);
   }
 
-  listar() {
+  listar(): Observable<any> {
     return this.http.get<any[]>(`${this.urlServer}listar`);
   }
 
-  verificaMarcacao(idJogo: any, idUsuario: any) {
+  verificaMarcacao(idJogo: any, idUsuario: any): Observable<any> {
     return this.http.get<any>(`${this.urlServer}verificaMarcacao/${idJogo}/${idUsuario}`);
   }
 

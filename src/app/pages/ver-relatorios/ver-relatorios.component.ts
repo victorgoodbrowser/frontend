@@ -20,49 +20,49 @@ export class VerRelatoriosComponent implements OnInit {
     //var aux: any[] = element?.className.split(" ")
     switch (id) {
       case 'jogos-melhores-medias':
-        jogosmelhoresmedias?.classList.add('btn-danger');
+        jogosmelhoresmedias?.classList.add('btn-dark');
         jogosmelhoresmedias?.classList.remove("btn-light");
 
-        jogosmaisavaliados?.classList.remove('btn-danger');
-        categoria?.classList.remove('btn-danger');
-        membros?.classList.remove('btn-danger');
+        jogosmaisavaliados?.classList.remove('btn-dark');
+        categoria?.classList.remove('btn-dark');
+        membros?.classList.remove('btn-dark');
         break;
       case 'jogos-mais-avaliados':
-        jogosmelhoresmedias?.classList.remove('btn-danger');
+        jogosmelhoresmedias?.classList.remove('btn-dark');
 
-        jogosmaisavaliados?.classList.add('btn-danger');
+        jogosmaisavaliados?.classList.add('btn-dark');
         jogosmaisavaliados?.classList.remove("btn-light");
 
-        categoria?.classList.remove('btn-danger');
-        membros?.classList.remove('btn-danger');
+        categoria?.classList.remove('btn-dark');
+        membros?.classList.remove('btn-dark');
         break;
       case 'categoria':
-        jogosmelhoresmedias?.classList.remove('btn-danger');
-        jogosmaisavaliados?.classList.remove('btn-danger');
+        jogosmelhoresmedias?.classList.remove('btn-dark');
+        jogosmaisavaliados?.classList.remove('btn-dark');
 
-        categoria?.classList.add('btn-danger');
+        categoria?.classList.add('btn-dark');
         categoria?.classList.remove("btn-light");
 
-        membros?.classList.remove('btn-danger');
+        membros?.classList.remove('btn-dark');
         break;
       case 'membros':
-        jogosmelhoresmedias?.classList.remove('btn-danger');
-        jogosmaisavaliados?.classList.remove('btn-danger');
-        categoria?.classList.remove('btn-danger');
+        jogosmelhoresmedias?.classList.remove('btn-dark');
+        jogosmaisavaliados?.classList.remove('btn-dark');
+        categoria?.classList.remove('btn-dark');
 
-        membros?.classList.add('btn-danger');
+        membros?.classList.add('btn-dark');
         membros?.classList.remove("btn-light");
         break;
       default:
         break;
     }
     /* if (aux.indexOf("btn-light") > -1 &&
-      aux.indexOf("text-danger") > -1) {
-      element.classList.remove("btn-danger");
+      aux.indexOf(" ") > -1) {
+      element.classList.remove("btn-dark");
       element.classList.remove("btn-light");
-      element.classList.remove("text-danger");
+      element.classList.remove(" ");
     } else {
-      element.classList.add("btn-danger");
+      element.classList.add("btn-dark");
     } */
   }
 

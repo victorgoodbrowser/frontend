@@ -38,9 +38,9 @@ export class EditarCategoriaComponent implements OnInit {
       (result) => {
         if (result) {
           alert('Categoria salva com sucesso.');
-          this.activeModal.close();
         }        
         this.atualizando = true;
+        this.activeModal.close();
       }, (error) => {
         this.atualizando = true;
         console.log(error);        

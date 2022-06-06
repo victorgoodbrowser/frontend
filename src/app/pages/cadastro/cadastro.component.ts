@@ -44,7 +44,7 @@ export class CadastroComponent implements OnInit {
 
     this.usuarioService.cadastro(payload).subscribe(
       (result) => {
-        console.log(result);
+        //console.log(result);
         if (result) {
           this.router.navigate(['login']);
           this.cadastrando = true;

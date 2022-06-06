@@ -33,6 +33,8 @@ export class JogoComponent implements OnInit {
   ngOnInit(): void {
     this.convertBase64toImage();
     this.usuario = this.authService.getUsuario();
+    //console.log(this.usuario);
+    
     this.getUsuarioAvaliacaoJogo(this.jogo);
     this.verificaMarcacaoUtil();
   }
@@ -60,8 +62,10 @@ export class JogoComponent implements OnInit {
     this.avaliacaoService.qtdDeAvaliacao(this.jogo, this.usuario.id, event).subscribe(
       (result) => {
         if (result) {
+          //console.log(result);
+          
           this.jogo = result;
-          this.usuarioService.inserirJogoAvaliado(+(result.usuarioCodigo), result.id).subscribe(
+          this.usuarioService.inserirJogoAvaliado(+(this.usuario.id), result.id).subscribe(
             (result) => {
             }, (error) => {
               console.log('error', result);

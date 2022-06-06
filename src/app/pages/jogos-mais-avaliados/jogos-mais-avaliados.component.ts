@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilService } from 'src/app/services/util/util.service';
+import { JogoService } from 'src/app/services/jogo/jogo.service';
 
 @Component({
   selector: 'app-jogos-mais-avaliados',
@@ -10,7 +10,7 @@ export class JogosMaisAvaliadosComponent implements OnInit {
 
   listaJogos: any = [];
 
-  constructor(private utilService: UtilService) { }
+  constructor(private jogoService: JogoService) { }
 
   ngOnInit(): void {
     this.getListaJogos();
@@ -21,9 +21,9 @@ export class JogosMaisAvaliadosComponent implements OnInit {
   }
 
   getListaJogos() {
-    this.utilService.listar().subscribe(
+    this.jogoService.buscarQtdAvaliacao().subscribe(
       (result) => {
-        console.log(result);  
+        //console.log(result);  
         this.listaJogos = result;      
       }, (error) => {
         console.log(error);        

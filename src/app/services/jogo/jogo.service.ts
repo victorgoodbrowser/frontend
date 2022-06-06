@@ -7,8 +7,7 @@ import { Jogo } from 'src/app/models/jogo/jogo.model';
   providedIn: 'root'
 })
 export class JogoService {
-
-  urlServer = "https://good-browser-games-lucas.herokuapp.com/goodbrowsergames/jogo/";
+  urlServer = "https://victor-good-browser-games.herokuapp.com/goodbrowsergames/jogo/";
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +17,7 @@ export class JogoService {
 
   listar(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlServer}listar`);
-  } 
+  }
 
   salvarImagem(jogo: Jogo, imagem: any): Observable<any> {
     return this.http.post<any>(`${this.urlServer}salvarImagem/${jogo.id}`, imagem);
@@ -47,24 +46,24 @@ export class JogoService {
   listaRecomendados(idUsuario: number): Observable<any> {
     return this.http.get<any>(`${this.urlServer}listaRecomendados/${idUsuario}`);
   }
-  
-  buscarPorPioresNotas(): Observable<any[]>  {
+
+  buscarPorPioresNotas(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlServer}buscarPorPioresNotas`);
   }
 
-  buscarPorMelhoresNotas(): Observable<any[]>  {
+  buscarPorMelhoresNotas(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlServer}buscarPorMelhoresNotas`);
   }
 
-  buscarPorMelhoresCategorias(): Observable<any[]>  {
+  buscarPorMelhoresCategorias(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlServer}buscarPorMelhoresCategorias`);
   }
 
-  buscarMembrosMaiorNumeroAvaliacao() : Observable<any[]> {
+  buscarMembrosMaiorNumeroAvaliacao(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlServer}buscarMembrosMaiorNumeroAvaliacao`);
   }
 
-  buscarQtdAvaliacao() : Observable<any[]> {    
+  buscarQtdAvaliacao(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlServer}buscarQtdAvaliacao`);
   }
 }

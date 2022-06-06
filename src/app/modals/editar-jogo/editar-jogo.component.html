@@ -1,8 +1,8 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h6 class="modal-title text-danger">Editar jogo</h6>
+        <h6 class="modal-title  ">Editar jogo</h6>
         <a style="cursor: pointer;" class="close" (click)="close()">
-            <span aria-hidden="true" class="text-danger">×</span>
+            <span aria-hidden="true" class=" ">×</span>
         </a>
     </div>
     <div class="modal-body row">
@@ -11,8 +11,8 @@
                 <span>
                     <img [src]="imageUrl" class="card-img-top" [alt]="jogo.nome" width="500px" height="260px">
                     <div class="mt-2">
-                        <button type="button" class="btn btn-block btn-outline-danger" (click)="triggerFileInput()">
-                            Editar imagem
+                        <button type="button" class="btn btn-block btn-outline-dark" (click)="triggerFileInput()">
+                            Mudar imagem
                         </button>
                         <input type="file" id="fileInput" accept="image/png, image/gif, image/jpeg"
                             (change)="uploadImagem($event)" [hidden]="true">
@@ -45,6 +45,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-light m-1" (click)="close()">Cancelar</button>
-        <button [disabled]="!validaJogo()" type="button" class="btn btn-outline-danger m-1" (click)="salvar()">Salvar</button>
+        <button [disabled]="!validaJogo()" type="button" class="btn btn-outline-success m-1" (click)="salvar()">Salvar</button>
     </div>
 </div>

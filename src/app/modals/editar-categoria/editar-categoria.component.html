@@ -2,7 +2,7 @@
     <div class="modal-header">
         <div class="modal-title">Editar categoria</div>
         <a style="cursor: pointer;" class="close" (click)="close()">
-            <span aria-hidden="true" class="text-danger">×</span>
+            <span aria-hidden="true" class=" ">×</span>
         </a>
     </div>
     <div class="modal-body">
@@ -14,6 +14,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-light m-1" [disabled]="atualizando" (click)="close()">Cancelar</button>
-        <button [disabled]="!validaCategoria()" type="button" class="btn btn-outline-danger m-1" (click)="salvar()">Salvar</button>
+        <button [disabled]="!validaCategoria()" type="button" class="btn btn-outline-success m-1" (click)="salvar()">Salvar</button>
     </div>
 </div>
