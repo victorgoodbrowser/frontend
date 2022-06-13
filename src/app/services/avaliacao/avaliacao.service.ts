@@ -11,8 +11,8 @@ export class AvaliacaoService {
 
   constructor(private http: HttpClient) { }
 
-  qtdDeAvaliacao(jogo: Jogo, idUsuario: any, nota: any): Observable<any> {
-    return this.http.post<any>(`${this.urlServer}qtdDeAvaliacao/${idUsuario}/${nota}`, jogo);
+  qtdDeAvaliacao(payload: any, idUsuario: any, nota: any): Observable<any> {
+    return this.http.post<any>(`${this.urlServer}qtdDeAvaliacao/${idUsuario}/${nota}`, payload);
   }
 
   listar(): Observable<any[]> {
@@ -21,5 +21,9 @@ export class AvaliacaoService {
 
   listarPorIdJogo(idJogo: any): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlServer}listarPorIdJogo/${idJogo}`);
+  }
+
+  buscarAvaliacaoPorJogo(idUsuario: any, idJogo: any) : Observable<any>{
+    return this.http.get<any>(`${this.urlServer}buscarAvaliacaoPorJogo/${idUsuario}/${idJogo}`);
   }
 }

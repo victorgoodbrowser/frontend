@@ -1,58 +1,57 @@
-<nav class="navbar bg-dark">
-    <!-- <span class="navbar-brand mb-0 h1">GoodBrowserGames</span> -->
-    <div class="d-flex justify-content-center">
-        <div class="navbar-expand">
-            <div class="navbar-nav" *ngIf="authService.isAuthenticated()">
-                <div class="nav-item">
-                    <a role="button" style="cursor: pointer;" class="nav-link text-light" routerLink="">Página inicial</a>
+<nav class="navbar bg-dark altura-sidebar">
+    <ul class="navbar-nav" *ngIf="authService.isAuthenticated()">
+        <div class="navbar-brand text-light"><b>GoodBrowserGames</b></div>
+        <li class="nav-item">
+            <a role="button" style="cursor: pointer;" class="nav-link text-light" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+            <a role="button" style="cursor: pointer;" class="nav-link text-light" *ngIf="usuario.ehAdmin === 'true'"
+                routerLink="/jogo-create">Registrar jogo</a>
+        </li>
+        <li class="nav-item">
+            <a role="button" style="cursor: pointer;" class="nav-link text-light" routerLink="/jogo-read">
+                Lista de jogos registrados
+            </a>
+        </li>
+        <li class="nav-item">
+            <a role="button" style="cursor: pointer;" class="nav-link text-light" routerLink="/categoria-read">Lista
+                de categorias</a>
+        </li>
+        <li class="nav-item">
+            <a role="button" style="cursor: pointer;" class="nav-link text-light"
+                routerLink="/jogo-read-recommend">Lista de jogos recomendados</a>
+        </li>
+        <li class="nav-item">
+            <a role="button" style="cursor: pointer;" class="nav-link text-light"
+                routerLink="/jogos-mais-avaliados">Avaliações mais uteis dos jogos </a>
+        </li>
+        <ul class="nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link menu-item dropdown-toggle text-light" data-toggle="dropdown"
+                    href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
+                    Relatórios
+                </a>
+                <div class=" dropdown dropdown-menu" style="font-size: 14px;">
+                    <a class="dropdown-item menu-item" routerLink="/relatorio/membros-mais-avaliaram">Membros mais
+                        avaliaram</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item menu-item" routerLink="/relatorio/jogos-mais-avaliados">Jogos
+                        mais avaliados</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" routerLink="/relatorio/categorias-melhores-avaliadas">Categorias mais
+                        avaliadas</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" routerLink="/relatorio/jogos-melhores-avaliados">Jogos melhores
+                        avaliados</a>
                 </div>
-                <div class="nav-item">
-                    <a class="nav-link text-light"> | </a>
-                </div>
-                <div class="nav-item">
-                    <a role="button" style="cursor: pointer;" class="nav-link text-light" *ngIf="usuario.ehAdmin === 'true'"
-                        routerLink="/jogo-create">Registrar jogo</a>
-                </div>
-                <div class="nav-item"  *ngIf="usuario.ehAdmin === 'true'">
-                    <a class="nav-link text-light"> | </a>
-                </div>
-                <div class="nav-item">
-                    <a role="button" style="cursor: pointer;" class="nav-link text-light" routerLink="/jogo-read">Lista de
-                        jogos registrados</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link text-light"> | </a>
-                </div>
-                <div class="nav-item">
-                    <a role="button" style="cursor: pointer;" class="nav-link text-light"
-                        routerLink="/categoria-read">Lista de categorias</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link text-light"> | </a>
-                </div>
-                <div class="nav-item">
-                    <a role="button" style="cursor: pointer;" class="nav-link text-light"
-                        routerLink="/jogo-read-recommend">Lista de jogos recomendados</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link text-light"> | </a>
-                </div>
-                <div class="nav-item">
-                    <a role="button" style="cursor: pointer;" class="nav-link text-light"
-                        routerLink="/jogos-mais-avaliados">Avaliações mais uteis dos jogos </a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link text-light"> | </a>
-                </div>
-                <div class="nav-item">
-                    <a role="button" style="cursor: pointer;" class="nav-link text-light"
-                        routerLink="/relatorio">Relatórios</a>
-                </div>                
-            </div>
-        </div>
-    </div>    
+            </li>
+        </ul>
+        <li class="nav-item justify-content-end">
+            <a role="button" style="cursor: pointer;" class="nav-link text-danger" (click)="logout()">Logout</a>
+        </li>
+    </ul>
 
-    <div class="navbar-expand">
+    <div class="navbar-expand" >
         <div class="navbar-nav justify-content-end" *ngIf="!authService.isAuthenticated()">
             <div class="nav-item">
                 <a role="button" class="nav-link text-light" routerLink="/login">Login</a>
@@ -61,9 +60,9 @@
                 <a role="button" class="nav-link text-light" routerLink="/cadastro">Cadastro</a>
             </div>
         </div>
-        <div class="navbar-nav justify-content-end" *ngIf="authService.isAuthenticated()">
+        <div class="navbar-nav justify-content-end">
             <div class="nav-item">
-                <a role="button" style="cursor: pointer;" class="nav-link text-danger" (click)="logout()">Logout</a>
+                
             </div>
         </div>
     </div>

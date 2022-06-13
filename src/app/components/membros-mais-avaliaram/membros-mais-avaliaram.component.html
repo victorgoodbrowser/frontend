@@ -1,10 +1,28 @@
-<div class="">
-    <div class="row">
-        <div *ngIf="verificaLista()" class="col-12 row d-flex justify-content-around">
-            <div *ngFor="let item of lista;" class="col-2" style="font-size: 12px;">
-                <app-membros [membro]="item"></app-membros>
-            </div>
-        </div>
-    </div>
+<div *ngIf="verificaLista()" class="col d-flex justify-content-center text-center">
+    <table style="font-size: 20px;" class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Nome de usuário</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Quantidade de jogos avaliados</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of lista; let i = index">
+                <td>
+                    {{i+1}}º
+                </td>
+                <td>
+                    {{item.userName}}
+                </td>
+                <td>
+                    {{item.nome}}
+                </td>
+                <td>
+                    {{item.qtdJogosAvaliados}}
+                </td>
+            </tr>
+        </tbody>        
+    </table>
 </div>
-

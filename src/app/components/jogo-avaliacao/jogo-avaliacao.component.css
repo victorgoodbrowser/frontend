@@ -3,13 +3,13 @@
 }
 
 .filled {
-  color: #fff200;
+  color: #0e00d9;
 }
 
 .bad {
-  color: #fffaa3;
+  color: #6156ff;
 }
 
 .filled.bad {
-  color: #fff200;
+  color: #0e00d9;
 }

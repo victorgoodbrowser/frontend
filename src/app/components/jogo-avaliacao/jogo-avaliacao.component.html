@@ -1,21 +1,20 @@
-<div class="card  border-dark">
+<div class="card" style="border: none;">
     <div class="card-body row">
-        <div class="col-4">            
-            <img [src]="imageUrl" class="card-img-top" [alt]="jogo.nome">
-        </div>
-        <div class="col-8">
-            <h5 class="card-title">{{jogo.nome}}</h5>
-            <p class="card-text">{{jogo.descricao}}</p>
-            <p class="card-text"><b>@{{usuario.userName}}</b></p>
-            <p class="card-text">Link: <a href="{{jogo.urlJogo}}" target="_blank">{{jogo.urlJogo}}</a></p>    
-    
-            <h1 class="text-primary">
-                <ngb-rating [max]="5" [(rate)]="jogo.nota" [readonly]="relatorio">
+        <div class="col-12">            
+            <img [src]="imageUrl" style="border-radius: 50%; width: 250px; height: 250px; display: block; margin: auto;" [alt]="jogo.nome">
+            <h1 class="text-primary text-center">
+                <ngb-rating [max]="5" [(rate)]="nota" [readonly]="relatorio">
                     <ng-template let-fill="fill" let-index="index">
-                        <span class="star" [class.filled]="fill === 100" [class.bad]="index < indexado()">&#9733;</span>
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
                     </ng-template>
                 </ngb-rating>
             </h1> 
+
+            <h5 class="card-title">{{jogo.nome}}</h5> 
+            <p class="card-text">Usuario: <b>{{usuario.userName}}</b></p>
+            <p class="card-text" *ngIf="comentario !== null "><b>Comentario:</b> {{comentario}}</p>
+            <p class="card-text" *ngIf="comentario === null || comentario === ''"><b>Sem comentário</b></p>
+            <p class="card-text"><a href="{{jogo.urlJogo}}" target="_blank">{{jogo.urlJogo}}</a></p>  
     
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="flexCheckDefault" [checked]="marcado"
@@ -24,6 +23,6 @@
                     Esta avaliação foi útil para mim
                 </label>
             </div>
-        </div>        
+        </div> 
     </div>
 </div>

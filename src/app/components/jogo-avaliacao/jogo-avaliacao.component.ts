@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthGuard } from 'src/app/core/auth/auth.guard';
+import { AvaliacaoService } from 'src/app/services/avaliacao/avaliacao.service';
 import { JogoService } from 'src/app/services/jogo/jogo.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { UtilService } from 'src/app/services/util/util.service';
@@ -14,7 +16,11 @@ export class JogoAvaliacaoComponent implements OnInit {
   @Input() usuarioCodigo: any;
   @Input() nota: any;
   @Input() relatorio: any;
-
+  @Input() comentario: any;
+  avaliacao: any = {
+    nota: 0,
+    comentario: ''
+  };
   jogo: any = {};
   imageUrl: string = '';
   usuario: any = {};
@@ -23,12 +29,16 @@ export class JogoAvaliacaoComponent implements OnInit {
   constructor(
     private jogoService: JogoService,
     private usuarioService: UsuarioService,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private avaliacaoService: AvaliacaoService,
+    private authService: AuthGuard,
     ) { }
 
   ngOnInit(): void {    
     this.buscarJogo(this.jogoCodigo);
     this.buscarUsuario(this.usuarioCodigo);
+    //console.log(this.comentario);    
+    this.buscarComentario();
     this.verificaMarcacaoUtil();
   }
 
@@ -36,6 +46,19 @@ export class JogoAvaliacaoComponent implements OnInit {
     this.utilService.verificaMarcacao(+(this.jogoCodigo), +(this.usuarioCodigo)).subscribe(
       (result) => {        
         this.marcado = result;
+      }, (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  buscarComentario() {
+    this.avaliacaoService.buscarAvaliacaoPorJogo(+(this.authService.getUsuario().id), +(this.jogoCodigo)).subscribe(
+      (result) => {
+        this.avaliacao = result ? result : {
+          nota: 0,
+          comentario: ''
+        };
       }, (error) => {
         console.log(error);
       }
@@ -73,9 +96,10 @@ export class JogoAvaliacaoComponent implements OnInit {
       (result) => {
         this.jogo = result; 
         this.convertBase64toImage(this.jogo.imagem);     
-        if (!this.nota) {
+        /* if (!this.nota) {
           this.nota = this.jogo.nota
-        } 
+        }  */
+        
       }, (error) => {
         console.log(error);
       }

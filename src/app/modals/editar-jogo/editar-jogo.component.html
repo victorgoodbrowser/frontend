@@ -6,13 +6,13 @@
         </a>
     </div>
     <div class="modal-body row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="div-img-anexo mb-4">
                 <span>
-                    <img [src]="imageUrl" class="card-img-top" [alt]="jogo.nome" width="500px" height="260px">
+                    <img [src]="imageUrl" class="mx-auto d-block" [alt]="jogo.nome" style="border-radius: 50%; width: 350px; height: 350px;">
                     <div class="mt-2">
-                        <button type="button" class="btn btn-block btn-outline-dark" (click)="triggerFileInput()">
-                            Mudar imagem
+                        <button type="button" class="btn btn-block btn-dark" (click)="triggerFileInput()">
+                            Editar imagem
                         </button>
                         <input type="file" id="fileInput" accept="image/png, image/gif, image/jpeg"
                             (change)="uploadImagem($event)" [hidden]="true">
@@ -23,9 +23,7 @@
              <div class="form-outline mb-4">
                 <label class="form-label" for="formNome">Nome</label>
                 <input type="text" id="formNome" class="form-control form-control-lg" [(ngModel)]="jogo.nome" />
-            </div>
-        </div>
-        <div class="col-6">  
+            </div> 
             <div class="form-outline mb-4">
                 <label class="form-label" for="formDescricao">Descrição</label>
                 <textarea id="formDescricao" class="form-control form-control-lg" [(ngModel)]="jogo.descricao" rows="5"

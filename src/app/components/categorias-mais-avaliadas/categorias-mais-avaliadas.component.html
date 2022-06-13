@@ -1,9 +1,28 @@
 <div class="row d-flex align-items-center justify-content-center h-100 m-2">
     <div class="col-12">
         <div class="d-flex justify-content-around align-items-center">
-            <h1 *ngIf="primeiro">1. {{primeiro.nome}}</h1>
-            <h2 *ngIf="segundo">2. {{segundo.nome}}</h2>
-            <h3 *ngIf="terceiro">3. {{terceiro.nome}}</h3>
+            <table style="font-size: 20px;" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="primeiro">
+                        <td>1º</td>
+                        <td>{{primeiro.nome}}</td>
+                    </tr>
+                    <tr *ngIf="segundo">
+                        <td>2º</td>
+                        <td>{{segundo.nome}}</td>
+                    </tr>
+                    <tr *ngIf="terceiro">
+                        <td>3º</td>
+                        <td>{{terceiro.nome}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

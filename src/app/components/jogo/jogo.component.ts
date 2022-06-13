@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from 'src/app/core/auth/auth.guard';
+import { AvaliacaoJogoComponent } from 'src/app/modals/avaliacao-jogo/avaliacao-jogo.component';
 import { EditarJogoComponent } from 'src/app/modals/editar-jogo/editar-jogo.component';
 import { AvaliacaoService } from 'src/app/services/avaliacao/avaliacao.service';
 import { JogoService } from 'src/app/services/jogo/jogo.service';
@@ -20,6 +21,10 @@ export class JogoComponent implements OnInit {
   imageUrl: string = '';
   usuario: any;
   marcado: boolean = false;
+  avaliacao: any = {
+    nota: 0
+  };
+  nota: any = 0;
 
   constructor(
     private modalService: NgbModal,
@@ -30,11 +35,14 @@ export class JogoComponent implements OnInit {
     private utilService: UtilService
   ) { }
 
+  ngOnChanges() {
+    this.buscarAvaliacaoPorJogo();
+  }
+
   ngOnInit(): void {
     this.convertBase64toImage();
     this.usuario = this.authService.getUsuario();
-    //console.log(this.usuario);
-    
+
     this.getUsuarioAvaliacaoJogo(this.jogo);
     this.verificaMarcacaoUtil();
   }
@@ -54,28 +62,63 @@ export class JogoComponent implements OnInit {
     )
   }
 
-  convertBase64toImage() {
-    this.imageUrl = 'data:image/png;base64,' + this.jogo.imagem;
-  }
-
-  avaliacao(event: any) {
-    this.avaliacaoService.qtdDeAvaliacao(this.jogo, this.usuario.id, event).subscribe(
+  buscarAvaliacaoPorJogo() {
+    this.avaliacaoService.buscarAvaliacaoPorJogo(+(this.authService.getUsuario().id), this.jogo.id).subscribe(
       (result) => {
-        if (result) {
-          //console.log(result);
-          
-          this.jogo = result;
-          this.usuarioService.inserirJogoAvaliado(+(this.usuario.id), result.id).subscribe(
-            (result) => {
-            }, (error) => {
-              console.log('error', result);
-            }
-          )
-        }
+        this.avaliacao = result ? result : {
+          nota: 0,
+          comentario: ''
+        };        
+        this.nota = this.avaliacao.nota;
       }, (error) => {
         console.log(error);
       }
     )
+  }
+
+  convertBase64toImage() {
+    this.imageUrl = 'data:image/png;base64,' + this.jogo.imagem;
+  }
+
+  avaliar(event: any) {
+    this.nota = event;
+    
+    //this.buscarAvaliacaoPorJogo();
+    const modalRef = this.modalService.open(AvaliacaoJogoComponent, {
+      backdrop: "static",
+      keyboard: true,
+      scrollable: false,
+      size: "lg",
+    });
+
+    modalRef.componentInstance.avaliacao = this.avaliacao;
+
+    modalRef.result.then((result) => {
+      if (result) {
+        var payload = {
+          jogoId: this.jogo.id,
+          comentario: result ? result : ''
+        }      
+
+        this.avaliacaoService.qtdDeAvaliacao(payload, this.usuario.id, event).subscribe(
+          (result) => {
+            //console.log(result);          
+            if (result) {
+              this.jogo = result;
+              this.usuarioService.inserirJogoAvaliado(+(this.usuario.id), result.id).subscribe(
+                (result) => {
+                }, (error) => {
+                  console.log('error', error);
+                }
+              )
+            }
+            this.buscarAvaliacaoPorJogo();
+          }, (error) => {
+            console.log(error);
+          }
+        )
+      }
+    });
   }
 
   openModalEditar(item: any) {
@@ -83,7 +126,7 @@ export class JogoComponent implements OnInit {
       backdrop: "static",
       keyboard: true,
       scrollable: false,
-      size: "xl",
+      size: "lg",
     });
 
     modalRef.componentInstance.jogo = item;
@@ -116,25 +159,21 @@ export class JogoComponent implements OnInit {
   }
 
   deletarJogo(item: any) {
+    //console.log(item);
     this.jogoService.deletarJogo(item.id).subscribe(
       (result) => {
-        console.log(result);
-        if (result) {
-          alert('Removido com sucesso.')
-          this.deleteRequest.emit();
-        } else {
-          alert('Erro ao remover o jogo.')
-        }
+        alert('Removido com sucesso.')
+        this.deleteRequest.emit();
       }, (error) => {
-        alert('Erro ao remover o jogo.')
-        console.log(error);
+        alert('Removido com sucesso.')
+        this.deleteRequest.emit();
       }
     )
   }
 
   verificaMarcacaoUtil() {
     this.utilService.verificaMarcacao(this.jogo.id, this.usuario.id).subscribe(
-      (result) => {        
+      (result) => {
         this.marcado = result;
       }, (error) => {
         console.log(error);
@@ -149,7 +188,7 @@ export class JogoComponent implements OnInit {
         jogoCodigo: this.jogo.id
       }
       this.utilService.marcar(payload).subscribe(
-        (result) => {          
+        (result) => {
         }, (error) => {
           console.log(error);
         }

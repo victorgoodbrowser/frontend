@@ -32,6 +32,7 @@ import { EditarCategoriaComponent } from './modals/editar-categoria/editar-categ
 import { CategoriasMaisAvaliadasComponent } from './components/categorias-mais-avaliadas/categorias-mais-avaliadas.component';
 import { MembrosMaisAvaliaramComponent } from './components/membros-mais-avaliaram/membros-mais-avaliaram.component';
 import { MembrosComponent } from './components/membros/membros.component';
+import { AvaliacaoJogoComponent } from './modals/avaliacao-jogo/avaliacao-jogo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import { MembrosComponent } from './components/membros/membros.component';
     CategoriasMaisAvaliadasComponent,
     MembrosMaisAvaliaramComponent,
     MembrosComponent,
+    AvaliacaoJogoComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { MembrosComponent } from './components/membros/membros.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
