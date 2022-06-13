@@ -2,7 +2,7 @@
     <div class="card-body row">
         <div class="col-12">            
             <img [src]="imageUrl" style="border-radius: 50%; width: 250px; height: 250px; display: block; margin: auto;" [alt]="jogo.nome">
-            <h1 class="text-primary text-center">
+            <h1 class="text-primary text-center" *ngIf="comentario !== null && comentario !== '' && comentario !== undefined">
                 <ngb-rating [max]="5" [(rate)]="nota" [readonly]="relatorio">
                     <ng-template let-fill="fill" let-index="index">
                         <span class="star" [class.filled]="fill === 100">&#9733;</span>
@@ -12,11 +12,14 @@
 
             <h5 class="card-title">{{jogo.nome}}</h5> 
             <p class="card-text">Usuario: <b>{{usuario.userName}}</b></p>
-            <p class="card-text" *ngIf="comentario !== null "><b>Comentario:</b> {{comentario}}</p>
+            <p class="card-text" *ngIf="comentario !== undefined"><b>Comentario:</b> {{comentario}}</p>
             <p class="card-text" *ngIf="comentario === null || comentario === ''"><b>Sem comentário</b></p>
             <p class="card-text"><a href="{{jogo.urlJogo}}" target="_blank">{{jogo.urlJogo}}</a></p>  
+            <p class="card-text"  *ngIf="comentario === undefined">
+                {{jogo.descricao}}
+            </p>
     
-            <div class="form-check">
+            <div class="form-check" *ngIf="comentario !== null && comentario !== '' && comentario !== undefined">
                 <input class="form-check-input" type="checkbox" id="flexCheckDefault" [checked]="marcado"
                     (click)="checkbox($event)">
                 <label class="form-check-label" for="flexCheckDefault">

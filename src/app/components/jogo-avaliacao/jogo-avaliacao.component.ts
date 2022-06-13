@@ -95,6 +95,8 @@ export class JogoAvaliacaoComponent implements OnInit {
     this.jogoService.buscarPorId(+(id)).subscribe(
       (result) => {
         this.jogo = result; 
+        console.log(this.jogo);
+        
         this.convertBase64toImage(this.jogo.imagem);     
         /* if (!this.nota) {
           this.nota = this.jogo.nota
