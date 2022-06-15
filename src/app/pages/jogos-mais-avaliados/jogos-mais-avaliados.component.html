@@ -5,7 +5,7 @@
         </div>
         <div *ngIf="verificaLista()" class="row col">
             <div *ngFor="let item of listaJogos" class="col-4 my-1">
-                <app-jogo-avaliacao [usuarioCodigo]="item.usuarioCodigo" [jogoCodigo]="item.id" [relatorio]="true">
+                <app-jogo-avaliacao [usuarioCodigo]="item.usuarioCodigo" [jogoCodigo]="item.id" [relatorio]="relatorio">
                 </app-jogo-avaliacao>
             </div>
         </div>
